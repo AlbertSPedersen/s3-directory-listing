@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Index of {{ path }}</title>
+    </head>
+    <body>
+        <h1>Index of {{ path }}</h1>
+        <table>
+            <thead>
+                <tr>
+                    <th align="left">Name</th>
+                    <th align="right">Last modified</th>
+                    <th align="right">Size</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td align="left"><a href="{{ path }}../">../</a></td>
+                    <td align="right">-</td>
+                    <td align="right">-</td>
+                </tr>
+            {% for directory in directories %}
+                <tr>
+                    <td align="left"><a href="{{ path }}{{ directory }}">{{ directory }}</a></td>
+                    <td align="right">-</td>
+                    <td align="right">-</td>
+                </tr>
+            {% endfor %}
+            {% for file in files %}
+                <tr>
+                    <td align="left"><a href="{{ path }}{{ file.name }}">{{ file.name }}</a></td>
+                    <td align="right">{{ file.last_modified }}</td>
+                    <td align="right">{{ file.size }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    </body>
+</html>
